@@ -51,9 +51,18 @@ public class Compra {
         }
     }
 
+    //Verificar se cliente é do plano plus (Se sim, ganha mais 10% de desconto)
+    public double gerarDescontoPorPlano(boolean plano){
+        if(plano){
+            return total = total - (0.1 * total);
+        }else {
+            return total;
+        }
+    }
+
 
     //Emitir nota fiscal
-    public void emitirNota(){
+    public void emitirNota(Cliente c){
         System.out.println("Suas compras "+getNomeCliente()+ " agradecemos sua preferencia e volte sempre!");
         int i = 1;
         for (Produto p : compras) {
@@ -61,6 +70,7 @@ public class Compra {
             i=i+1;
         }
         gerarDescontoporValor();
+        gerarDescontoPorPlano(c.getPlanoPlus());
         System.out.println("Total: "+getTotal());
     }
 }

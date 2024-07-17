@@ -5,7 +5,7 @@ import models.Produto;
 public class Main {
     public static void main(String[] args) {
 
-        Cliente cliente1 = new Cliente("Jose", 523654879);
+        Cliente cliente1 = new Cliente("Jose", false);
 
         Produto produto1 = new Produto("Ketchup", 20.0);
         Produto produto2 = new Produto("Arroz", 5.80);
@@ -19,6 +19,6 @@ public class Main {
         novaCompra.adicionarCompra(produto1);
         novaCompra.adicionarCompra(produto1);
 
-        novaCompra.emitirNota();
+        novaCompra.emitirNota(cliente1);
     }
 }

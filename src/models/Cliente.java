@@ -2,17 +2,19 @@ package models;
 
 public class Cliente {
     private String nome;
-    private long cpf;
+    private boolean planoPlus;
 
-    public Cliente(String nome, long cpf) {
+    //Construtors
+    public Cliente(String nome, boolean plano) {
         this.nome = nome;
-        this.cpf = cpf;
+        this.planoPlus = plano;
     }
 
+    //Getters
     public String getNome() {
         return nome;
     }
-    public long getCpf() {
-        return cpf;
+    public boolean getPlanoPlus() {
+        return planoPlus;
     }
 }
