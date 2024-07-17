@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Compra {
-    private List<Produto> compras = new ArrayList<>();
+    private List<Produto> compras;
     private String nomeCliente;
     private boolean desconto = false;
     private double total;
@@ -17,6 +17,7 @@ public class Compra {
     //Construtores
     public Compra(String nomeCliente) {
         this.nomeCliente = nomeCliente;
+        this.compras = new ArrayList<>();
     }
 
     //Getters
@@ -36,17 +37,19 @@ public class Compra {
     //Lista de metodos
 
     //Adicionar produto as compras
-    public void adicionarCompra(Produto p){
-        compras.add(p);
-        System.out.println(p.getNome()+" adicionado ao caixa");
-        total = total+p.getPreco();
+    public void adicionarCompra(String produto, double valor){
+        compras.add(new Produto(produto, valor));
+        System.out.println(produto+" adicionado ao caixa");
+        total = total+valor;
     }
 
     //Verificar Desconto por valor (Se o valor da compra passar de 50 cliente tem 10% de desconto)
     public double gerarDescontoporValor(){
         if(total > 50){
+            System.out.println("Aplicando 10%");
             return total = total - (0.1 * total);
         }else {
+            System.out.println("Desconto não aplicado");
             return total;
         }
     }
@@ -54,8 +57,10 @@ public class Compra {
     //Verificar se cliente é do plano plus (Se sim, ganha mais 10% de desconto)
     public double gerarDescontoPorPlano(boolean plano){
         if(plano){
+            System.out.println("Usuario é plus");
             return total = total - (0.1 * total);
         }else {
+            System.out.println("Usuario não é plus");
             return total;
         }
     }
